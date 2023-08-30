@@ -1,0 +1,85 @@
+﻿outgoingmessages.summonplayertolocation // this could be useful
+
+ChatUI.ClearClanChat();
+
+ChatUI.SendLogMessage("<#FF00FF>Black people");
+ChatUI.SendMinigameMessage("<#FF00FF>are black");
+
+
+System.Random randomRace = new System.Random();
+int index = randomRace.Next(0, 25);
+localPlayer.ChangeSkinColor(index);
+localPlayer.ChangeSkinColor_DEBUG();
+
+//playerData.IncreaseVipTime(600);
+
+// anti glue block
+[HarmonyPatch(typeof(ConfigData), "GetBlockRunSpeed")]
+    public static class ConfigData_GetBlockRunSpeed
+    {
+        public static void Prefix(ref World.BlockType blockType)
+        {
+
+            blockType = World.BlockType.Ice;
+        }
+    }
+
+// special dying
+localPlayer.shouldDoSpecialDying = true;
+            localPlayer.specialDyingAnimation = SpecialDyingAnimationNames.Stand;
+            
+            localPlayer.specialDyingType = SpecialDyingType.Frozen;
+
+if (Input.GetKeyDown(KeyCode.V))
+            {
+                playerData.tutorialQuests.Clear();
+                playerData.tutorialState = PlayerData.TutorialState.TutorialCompleted;
+            }
+
+            public static SeedData seedData;
+        seedData = Seeds.GenerateSeedData(world.GetBlockType(Globals.mapPoint), Globals.mapPoint, dateTime, 1f, 1f, false );
+
+
+        time += Time.deltaTime;
+
+            if (time >= interpolationPeriod)
+            {
+                time = time - interpolationPeriod;
+                DateTime hitTime = localPlayer.raceStartTime;
+
+                
+
+                if (world != null)
+                {
+                    World.BlockType block = inventoryControl.GetCurrentSelection().blockType;
+                    var inventory = playerData.GetInventoryAsOrderedByInventoryItemType();
+                    if (world.GetBlockType(localPlayer.currentPlayerBelowMapPoint) != block)
+                    {
+                        
+                        if (!isDone)
+                        {
+                            OutgoingMessages.SendSetBlockMessage(localPlayer.currentPlayerBelowMapPoint, block);
+                            short count = 1;
+                            playerData.RemoveItemsFromInventory(inventoryControl.GetCurrentSelection(), count);
+                            isDone = true;
+                        }
+
+
+                    }
+                    else
+                    {
+                        
+                        OutgoingMessages.SendHitBlockMessage(localPlayer.currentPlayerBelowMapPoint, hitTime, false);
+                        isDone = false;
+                    }
+                }
+                
+                
+            }
+
+teleport
+Vector3 PlaceToGovec = Utils.ConvertMapPointToWorldPoint(Globals.mapPoint);
+
+                localPlayer.myTransform.position = PlaceToGovec;
+
+portal ids = ARKANGEL/Main.cpp - line 2646
